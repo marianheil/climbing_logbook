@@ -74,3 +74,64 @@ li {
     margin-bottom: 1rem;
     border-radius: 6px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+th,
+td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.grade {
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.grade::before {
+    content: attr(class);
+    display: none;
+}
+
+/* Grade-based color shading */
+td.grade-4 {
+    background: #91d18b;
+}
+
+td.grade-5 {
+    background: #f6e58d;
+    color: black;
+}
+
+td.grade-6 {
+    background: #f9ca24;
+    color: black;
+}
+
+td.grade-7 {
+    background: #eb4d4b;
+}
+
+td.grade-8 {
+    background: #be2edd;
+}
+
+td.grade-9 {
+    color: white;
+    background: #130f40;
+}
+
+#logTable_filter {
+    margin-bottom: 1rem;
+}

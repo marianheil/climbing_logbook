@@ -29,7 +29,7 @@ sectorSel.on('change', () => {
     const zone = region.zones.find(z => z.name === zoneSel.val());
     const sector = zone.sectors.find(s => s.name === sectorSel.val());
     const routes = sortByName(sector.routes)
-    routeSel.empty().append(routes.map(r => `<option>${r.name} (${r.grade})</option>`));
+    routeSel.empty().append(routes.map(r => `<option value="${r.name}">${r.name} (${r.grade})</option>`));
 });
 
 $('#logForm').on('submit', e => {

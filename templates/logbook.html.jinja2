@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Climbing Logbook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Climbing Logbook Entries</h1>
+    <a href="/">← Log another route</a>
+    {% if logs %}
+    <ul>
+        <table id="logTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Region</th>
+                    <th>Zone</th>
+                    <th>Sector</th>
+                    <th>Route</th>
+                    <th>Grade</th>
+                    <th>Lead</th>
+                    <th>How finished</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in logs %}
+                <tr>
+                    <td>{{ entry.date }}</td>
+                    <td>{{ entry.region }}</td>
+                    <td>{{ entry.zone }}</td>
+                    <td>{{ entry.sector }}</td>
+                    <td>{{ entry.route }}</td>
+                    <td class="grade-{{ entry.grade | extract_grade_number }}">{{ entry.grade }}</td>
+                    <td>{% if entry.lead %}✓{% else %}–{% endif %}</td>
+                    <td>{{ entry.attempt }}</td>
+                    <td>{{ entry.comment }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </ul>
+    {% else %}
+    <p>No entries logged yet.</p>
+    {% endif %}
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<script>
+    $(document).ready(function () {
+        $('#logTable').DataTable({
+            order: [[0, 'desc']]
+        });
+    });
+</script>
