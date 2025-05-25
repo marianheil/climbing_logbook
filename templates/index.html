@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Climbing Logbook</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <h1>Log a Climb</h1>
+  <form id="logForm">
+    <label>Region:</label>
+    <select id="region" name="region"></select><br>
+
+    <label>Zone:</label>
+    <select id="zone" name="zone"></select><br>
+
+    <label>Sector:</label>
+    <select id="sector" name="sector"></select><br>
+
+    <label>Route:</label>
+    <select id="route" name="route"></select><br>
+
+    <label>Date:</label>
+    <input type="date" name="date" required><br>
+
+    <label>Attempt:</label>
+    <select id="attempt" name="attempt">
+      <option value="no_fall">Without falls</option>
+      <option value="multiple">Multiple full attempts</option>
+      <option value="with_fall">With falls</option>
+      <option value="skipped">Partially skipped</option>
+      <option value="not_finished">Not finished</option>
+    </select><br>
+
+    <label>Lead:</label>
+    <input type="checkbox" id="lead" name="lead"> Lead
+    </input><br>
+
+    <label>Comment:</label>
+    <input type="text" name="comment"><br>
+
+    <button type="submit">Save</button>
+    <a href="/logbook">View My Logbook →</a>
+  </form>
+
+  <script>
+    const data = {{ routes | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

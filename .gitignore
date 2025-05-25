@@ -1,2 +1,4 @@
 .venv
 ettringen_all_routes.json
+__pycache__
+logbook.json

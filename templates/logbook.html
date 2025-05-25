@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Climbing Logbook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Climbing Logbook Entries</h1>
+    <a href="/">← Log another route</a>
+    {% if logs %}
+    <ul>
+        {% for entry in logs %}
+        <li>
+            <strong>{{ entry.date }}</strong>:
+            <em>{{ entry.route }}</em> in {{ entry.sector }} / {{ entry.zone }} / {{ entry.region }}<br>
+            Comment: {{ entry.comment }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No entries logged yet.</p>
+    {% endif %}
+</body>
+
+</html>
